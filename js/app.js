@@ -25,3 +25,8 @@ $( '.deck' ).append($('<li class="card"><i class="fa ' + cards[i] + '"></i></li>
 };
 
 newGame();
+
+// Listen to clicks on class card and show icons
+$( ".card" ).click(function(flip) {
+  $(this).addClass("show");
+});

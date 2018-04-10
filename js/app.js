@@ -34,9 +34,33 @@ console.log(openCards.length)
        $(this).addClass('open show');
         openCards.push(this);
          console.log(openCards)
+      if(openCards[0].innerHTML === openCards[1].innerHTML){
+           match()
+       } else {
+          notMatch()
+       }
    }
 
  }
 
     )};
+
+// If the cards are matching, remove class open and show and add class match
+function match () {
+  openCards[0].classList.add("match");
+   openCards[1].classList.add("match");
+   openCards[0].classList.remove("show", "open");
+   openCards[1].classList.remove("show", "open");
+   openCards = [];
+}
+
+// If the cards are not matching, return to the initial state after a small delay => setTimeout function
+function notMatch () {
+ setTimeout(function(){
+       openCards[0].classList.remove("show", "open");
+       openCards[1].classList.remove("show", "open");
+       openCards = [];
+   },600);
+}
+
 newGame();

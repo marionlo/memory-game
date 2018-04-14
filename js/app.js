@@ -6,6 +6,7 @@ let matchedCards = 0;
 let timer = 0;
 
 
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
    var currentIndex = array.length, temporaryValue, randomIndex;
@@ -96,12 +97,21 @@ function notMatch () {
 function endGame () {
   if (matchedCards >= 8) {
     console.log(matchedCards);
-    alert("Wow it took you only " + moves +" moves in " + timer + " s to win this game! Congrats! Do you want to play again?");
+    alert("Wow it took you only " + moves +" moves in " + timer + " s to win this game! You've got a score of "+ score + " Congrats! Do you want to play again?");
   }
   else {
   console.log(matchedCards);
   }
 
+  if (moves > 20 && moves < 15) {
+    let score = "1";
+          } else if (moves > 14 && moves < 5) {
+              score = "2"
+          } else {
+            score = "3"
+
+          }
+          console.log(score);
 }
 
 

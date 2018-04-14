@@ -31,12 +31,7 @@ $( '.deck' ).append($('<li class="card"><i class="fa ' + cards[i] + '"></i></li>
 
 };
 
-
-$(".deck").one("click", function () {
-setInterval(function(){
-     timer++;
-      $( '.timer' ).html(timer); }, 1000);
-      });
+startTimer ()
 
 
 // Listen to cards clicks
@@ -72,13 +67,7 @@ console.log(openCards.length)
            }
 
    // If all of the cards are matching you win the game
-    if (matchedCards >= 8) {
-      console.log(matchedCards);
-      alert("you win");
-    }
-    else {
-    console.log(matchedCards);
-    }
+   endGame()
 
  }
 
@@ -102,5 +91,29 @@ function notMatch () {
        openCards = [];
    },600);
 }
+
+// If all the cards are matching, end the game
+function endGame () {
+  if (matchedCards >= 8) {
+    console.log(matchedCards);
+    alert("Wow it took you only " + moves +" moves in " + timer + " s to win this game! Congrats! Do you want to play again?");
+  }
+  else {
+  console.log(matchedCards);
+  }
+
+}
+
+
+// Start timer on first click
+function startTimer () {
+  $(".deck").one("click", function () {
+  setInterval(function(){
+       timer++;
+        $( '.timer' ).html(timer); }, 1000);
+        });
+
+}
+
 
 newGame();

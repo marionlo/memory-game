@@ -28,13 +28,20 @@ for (let i = 0; i < cards.length; i++) {
 $( '.deck' ).append($('<li class="card"><i class="fa ' + cards[i] + '"></i></li>'))
 }
    cardsListener();
-   setInterval(function(){
+
+};
+
+
+$(".deck").one("click", function () {
+setInterval(function(){
      timer++;
       $( '.timer' ).html(timer); }, 1000);
-};
+      });
+
 
 // Listen to cards clicks
 function cardsListener() {
+
 console.log(openCards.length)
  $(".card").click(function() {
    if (openCards.length < 2) {

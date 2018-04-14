@@ -1,5 +1,6 @@
 let icons = ["fa-anchor", "fa-anchor", "fa-bicycle", "fa-bicycle", "fa-bolt", "fa-bolt", "fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o", "fa-cube", "fa-cube", "fa-leaf", "fa-leaf", "fa-bomb", "fa-bomb"];
- let openCards = [];
+let openCards = [];
+let matchedCards = 0;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -33,12 +34,18 @@ console.log(openCards.length)
    if (openCards.length < 2) {
        $(this).addClass('open show');
         openCards.push(this);
+
          console.log(openCards)
       if(openCards[0].innerHTML === openCards[1].innerHTML){
+
            match()
        } else {
+
           notMatch()
        }
+       matchedCards++;
+       $( '.moves' ).html(matchedCards);
+       console.log(matchedCards);
    }
 
  }

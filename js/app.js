@@ -3,6 +3,7 @@ let icons = ["fa-anchor", "fa-anchor", "fa-bicycle", "fa-bicycle", "fa-bolt", "f
 let openCards = [];
 let moves = 0;
 let matchedCards = 0;
+let timer = 0;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -27,6 +28,9 @@ for (let i = 0; i < cards.length; i++) {
 $( '.deck' ).append($('<li class="card"><i class="fa ' + cards[i] + '"></i></li>'))
 }
    cardsListener();
+   setInterval(function(){
+     timer++;
+      $( '.timer' ).html(timer); }, 1000);
 };
 
 // Listen to cards clicks

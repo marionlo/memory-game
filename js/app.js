@@ -1,5 +1,7 @@
+// Global variables
 let icons = ["fa-anchor", "fa-anchor", "fa-bicycle", "fa-bicycle", "fa-bolt", "fa-bolt", "fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o", "fa-cube", "fa-cube", "fa-leaf", "fa-leaf", "fa-bomb", "fa-bomb"];
 let openCards = [];
+let moves = 0;
 let matchedCards = 0;
 
 
@@ -43,10 +45,29 @@ console.log(openCards.length)
 
           notMatch()
        }
-       matchedCards++;
-       $( '.moves' ).html(matchedCards);
-       console.log(matchedCards);
+       // Increment the number of moves and append it on the html
+       moves++;
+       $( '.moves' ).html(moves);
+       console.log(moves);
    }
+
+   // Append the stars according to the number of moves
+   if (moves > 20) {
+               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>';
+           } else if (moves > 14) {
+               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
+           } else {
+               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
+           }
+
+   // If all of the cards are matching you win the game
+    if (matchedCards >= 8) {
+      console.log(matchedCards);
+      alert("you win");
+    }
+    else {
+    console.log(matchedCards);
+    }
 
  }
 
@@ -59,6 +80,7 @@ function match () {
    openCards[0].classList.remove("show", "open");
    openCards[1].classList.remove("show", "open");
    openCards = [];
+   matchedCards++
 }
 
 // If the cards are not matching, return to the initial state after a small delay => setTimeout function

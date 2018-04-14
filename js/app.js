@@ -4,6 +4,7 @@ let openCards = [];
 let moves = 0;
 let matchedCards = 0;
 let timer = 0;
+let clock;
 
 
 
@@ -98,17 +99,18 @@ function endGame () {
   if (matchedCards >= 8) {
     console.log(matchedCards);
     alert("Wow it took you only " + moves +" moves in " + timer + " s to win this game! You've got a score of "+ score + " Congrats! Do you want to play again?");
+stopTimer()
   }
   else {
   console.log(matchedCards);
   }
 
   if (moves > 20 && moves < 15) {
-    let score = "1";
+    let score = "3";
           } else if (moves > 14 && moves < 5) {
               score = "2"
           } else {
-            score = "3"
+            score = "1"
 
           }
           console.log(score);
@@ -117,13 +119,17 @@ function endGame () {
 
 // Start timer on first click
 function startTimer () {
-  $(".deck").one("click", function () {
-  setInterval(function(){
+ $(".deck").one("click", function () {
+     clock = setInterval(function(){
        timer++;
         $( '.timer' ).html(timer); }, 1000);
         });
 
 }
+
+function stopTimer() {
+	clearInterval(clock);
+};
 
 
 newGame();

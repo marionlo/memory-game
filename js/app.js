@@ -1,10 +1,10 @@
-// Global variables
 let icons = ["fa-anchor", "fa-anchor", "fa-bicycle", "fa-bicycle", "fa-bolt", "fa-bolt", "fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o", "fa-cube", "fa-cube", "fa-leaf", "fa-leaf", "fa-bomb", "fa-bomb"];
-let openCards = [];
-let moves = 0;
-let matchedCards = 0;
-let timer = 0;
-let clock;
+ let openCards = [];
+ let moves = 0;
+ let matchedCards = 0;
+ let timer = 0;
+ let clock;
+
 
 
 
@@ -23,57 +23,37 @@ function shuffle(array) {
    return array;
 }
 
+
+
+
+
 // Create the deck and shuffle the cards
 function newGame() {
-let cards = shuffle(icons);
+  let cards = shuffle(icons);
+  $( '.deck' ).empty();
+  timer = 0;
+   $( '.moves' ).text("0");
+  stopTimer()
+  startTimer ()
+  openCards = [];
+  moves = 0;
+  matchedCards = 0;
+
 for (let i = 0; i < cards.length; i++) {
 $( '.deck' ).append($('<li class="card"><i class="fa ' + cards[i] + '"></i></li>'))
 }
-   cardsListener();
-
-};
-
-startTimer ()
+cardsListener()
+  };
 
 
-// Listen to cards clicks
-function cardsListener() {
 
-console.log(openCards.length)
- $(".card").click(function() {
-   if (openCards.length < 2) {
-       $(this).addClass('open show');
-        openCards.push(this);
 
-         console.log(openCards)
-      if(openCards[0].innerHTML === openCards[1].innerHTML){
+newGame()
 
-           match()
-       } else {
 
-          notMatch()
-       }
-       // Increment the number of moves and append it on the html
-       moves++;
-       $( '.moves' ).html(moves);
-       console.log(moves);
-   }
 
-   // Append the stars according to the number of moves
-   if (moves > 20) {
-               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>';
-           } else if (moves > 14) {
-               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
-           } else {
-               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
-           }
 
-   // If all of the cards are matching you win the game
-   endGame()
 
- }
-
-    )};
 
 // If the cards are matching, remove class open and show and add class match
 function match () {
@@ -94,7 +74,6 @@ function notMatch () {
    },600);
 }
 
-// If all the cards are matching, end the game
 function endGame () {
   if (matchedCards >= 8) {
     console.log(matchedCards);
@@ -116,14 +95,11 @@ stopTimer()
           console.log(score);
 }
 
-
 // Start timer on first click
 function startTimer () {
- $(".deck").one("click", function () {
      clock = setInterval(function(){
        timer++;
         $( '.timer' ).html(timer); }, 1000);
-        });
 
 }
 
@@ -132,4 +108,46 @@ function stopTimer() {
 };
 
 
-newGame();
+// Listen to cards clicks
+// Listen to cards clicks
+function cardsListener() {
+
+console.log(openCards.length)
+$(".card").click(function() {
+  if (openCards.length < 2) {
+      $(this).addClass('open show');
+       openCards.push(this);
+
+        console.log(openCards)
+     if(openCards[0].innerHTML === openCards[1].innerHTML){
+
+          match()
+      } else {
+
+         notMatch()
+      }
+      // Increment the number of moves and append it on the html
+      moves++;
+      $( '.moves' ).html(moves);
+      console.log(moves);
+  }
+
+  // Append the stars according to the number of moves
+  if (moves > 20) {
+              document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>';
+          } else if (moves > 14) {
+              document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
+          } else {
+              document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
+          }
+
+  // If all of the cards are matching you win the game
+  endGame()
+
+}
+
+   )};
+
+
+// Restart button
+ document.querySelector('.restart').addEventListener('click', newGame);

@@ -108,3 +108,57 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Responsiveness
+ */
+
+@media screen and (max-width: 460px){
+    .score-panel {
+        font-size: 12px;
+    }
+
+    .deck {
+        width: 250px;
+        min-height: 290px;
+        padding: 2px 4px 2px;
+    }
+
+    .deck .card {
+        width: 55px;
+        height: 55px;
+    }
+
+    .deck .card.show {
+        font-size: 24px;
+    }
+
+    .deck .card.match {
+        font-size: 24px;
+    }
+
+
+    .score-panel {
+        width: 285px;
+        padding: 0;
+    }
+
+}
+
+@media screen and (min-width: 460px) and (max-width: 700px) {
+    .deck{
+        width: 400px;
+        min-height: 420px;
+        padding: 4px 8px 4px;
+    }
+
+    .deck .card {
+        width: 90px;
+        height: 90px;
+    }
+
+    .score-panel {
+        width: 450px;
+        padding: 0 10px 0px;
+    }
+  }

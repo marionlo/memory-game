@@ -22,7 +22,7 @@ If the cards match, both cards stay flipped over.
 If the cards do not match, both cards are flipped face down.
 The game ends once all cards have been correctly matched.
 
-## [Tools Used]
+## Tools Used
 
 [Fontawesome](https://marionlo.github.io/memory-game/) was used to display game card's icons.
 

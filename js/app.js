@@ -33,6 +33,7 @@ function newGame() {
   $( '.deck' ).empty();
   timer = 0;
    $( '.moves' ).text("0");
+  $( '.timer' ).text("0");
   stopTimer()
   startTimer ()
   openCards = [];
@@ -75,13 +76,9 @@ function notMatch () {
 }
 
 function endGame () {
-  if (matchedCards >= 8) {
-    console.log(matchedCards);
-    alert("Wow it took you only " + moves +" moves in " + timer + " s to win this game! You've got a score of "+ score + " Congrats! Do you want to play again?");
-stopTimer()
-  }
-  else {
-  console.log(matchedCards);
+  if (matchedCards === 8) {
+    $('#winnerModal').modal('show');
+stopTimer();
   }
 
   if (moves > 20 && moves < 15) {

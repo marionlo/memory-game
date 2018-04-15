@@ -57,8 +57,8 @@ newGame();
 
 // If the cards are matching, remove class open and show and add class match
 function match() {
-    openCards[0].classList.add("match");
-    openCards[1].classList.add("match");
+    openCards[0].classList.add("match", "disabled");
+    openCards[1].classList.add("match", "disabled");
     openCards[0].classList.remove("show", "open");
     openCards[1].classList.remove("show", "open");
     openCards = [];
@@ -68,8 +68,8 @@ function match() {
 // If the cards are not matching, return to the initial state after a small delay => setTimeout function
 function notMatch() {
     setTimeout(function() {
-        openCards[0].classList.remove("show", "open");
-        openCards[1].classList.remove("show", "open");
+        openCards[0].classList.remove("show", "open", "disabled");
+        openCards[1].classList.remove("show", "open", "disabled");
         openCards = [];
     }, 600);
 }
@@ -115,10 +115,12 @@ function cardsListener() {
     console.log(openCards.length);
     $(".card").click(function() {
             if (openCards.length < 2) {
-                $(this).addClass('open show');
+                $(this).addClass('open show disabled');
                 openCards.push(this);
 
                 console.log(openCards);
+
+
                 if (openCards[0].innerHTML === openCards[1].innerHTML) {
 
                     match();

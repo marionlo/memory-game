@@ -78,6 +78,7 @@ function notMatch () {
 function endGame () {
   if (matchedCards === 8) {
     $('#winnerModal').modal('show');
+    $('#gameStats').text(`In ${timer} seconds, you did a total of ${moves} moves with a score of ${score}. Well done!`);
 stopTimer();
   }
 

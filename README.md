@@ -23,6 +23,7 @@ If the cards do not match, both cards are flipped face down.
 The game ends once all cards have been correctly matched.
 
 ## [Tools Used]
+
 [Fontawesome](https://marionlo.github.io/memory-game/) was used to display game card's icons.
 
 [Bootstrap](https://getbootstrap.com/) was used to display the modal at the end of the game.

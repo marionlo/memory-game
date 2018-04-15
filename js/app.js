@@ -36,7 +36,6 @@ function newGame() {
     $('.moves').text("0");
     $('.timer').text("0");
     stopTimer();
-    startTimer();
     openCards = [];
     moves = 0;
     matchedCards = 0;
@@ -75,10 +74,12 @@ function notMatch() {
 }
 
 function endGame() {
+
     if (matchedCards === 8) {
+        stopTimer();
         $('#winnerModal').modal('show');
         $('#gameStats').text(`It took you ${timer} seconds, you did ${moves} moves! Your score is ${score}. Woohooo congrats!`);
-        stopTimer();
+
     }
 
 
@@ -117,7 +118,6 @@ function cardsListener() {
             if (openCards.length < 2) {
                 $(this).addClass('open show disabled');
                 openCards.push(this);
-
                 console.log(openCards);
 
 
@@ -135,6 +135,8 @@ function cardsListener() {
             }
 
             // Append the stars according to the number of moves
+
+// Append the stars according to the number of moves
             if (moves > 24) {
                 document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>';
             } else if (moves > 12) {
@@ -154,3 +156,6 @@ function cardsListener() {
 
 // Restart button
 document.querySelector('.restart').addEventListener('click', newGame);
+
+// Start timer at first click on deck
+$(".deck").one('click', function(e) {startTimer(); });

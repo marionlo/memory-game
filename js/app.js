@@ -84,11 +84,11 @@ stopTimer();
   }
 
 
-  if (moves < 8) {
+  if (moves < 12) {
           score = "3";
-  } if (moves < 14 && moves > 8) {
+  } if (moves < 24 && moves > 12) {
               score = "2"
-          } else if (moves > 20) {
+          } else if (moves > 24) {
             score = "1"
 
           }
@@ -133,9 +133,9 @@ $(".card").click(function() {
   }
 
   // Append the stars according to the number of moves
-  if (moves > 20) {
+  if (moves > 24) {
               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>';
-          } else if (moves > 14) {
+          } else if (moves > 12) {
               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';
           } else {
               document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li> <li><i class="fa fa-star"></i></li>';

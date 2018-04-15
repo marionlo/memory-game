@@ -39,7 +39,10 @@ function newGame() {
     openCards = [];
     moves = 0;
     matchedCards = 0;
+    // Start timer at first click on deck
+    $(".deck").one('click', function(e) {startTimer(); });
 
+// Append the cards on the deck
     for (let i = 0; i < cards.length; i++) {
         $('.deck').append($('<li class="card"><i class="fa ' + cards[i] + '"></i></li>'));
     }
@@ -156,6 +159,3 @@ function cardsListener() {
 
 // Restart button
 document.querySelector('.restart').addEventListener('click', newGame);
-
-// Start timer at first click on deck
-$(".deck").one('click', function(e) {startTimer(); });

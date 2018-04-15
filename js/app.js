@@ -4,6 +4,7 @@ let icons = ["fa-anchor", "fa-anchor", "fa-bicycle", "fa-bicycle", "fa-bolt", "f
  let matchedCards = 0;
  let timer = 0;
  let clock;
+ let score = "0";
 
 
 
@@ -82,11 +83,12 @@ function endGame () {
 stopTimer();
   }
 
-  if (moves > 20 && moves < 15) {
-    let score = "3";
-          } else if (moves > 14 && moves < 5) {
+
+  if (moves < 8) {
+          score = "3";
+  } if (moves < 14 && moves > 8) {
               score = "2"
-          } else {
+          } else if (moves > 20) {
             score = "1"
 
           }
